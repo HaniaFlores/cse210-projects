@@ -6,51 +6,71 @@ class Program
     {
         //Menu
         static void DisplayIntro() {
-            Console.WriteLine("Welcome to the Journal Program");
+            Console.WriteLine("\nWelcome to the Journal Program");
         };
 
-        static void DisplayMenu() {
-            Console.WriteLine("Select the action:");
-            Console.WriteLine("1. Entry");
-            Console.WriteLine("2. Display all entries");
-            Console.WriteLine("3. Load");
-            Console.WriteLine("4. Save");
-            Console.WriteLine("5. Quit");
+
+        static string DisplayMenu() {
+            bool isInputValid = false;
+            string selectedOption = "";
+
+            do
+            {
+                Console.WriteLine("\nSelect the action:");
+                Console.WriteLine("1. Entry");
+                Console.WriteLine("2. Display all entries");
+                Console.WriteLine("3. Load");
+                Console.WriteLine("4. Save");
+                Console.WriteLine("5. Clear Journal");
+                Console.WriteLine("6. Quit");
+                selectedOption = Console.ReadLine().Trim();
+                
+                if (selectedOption == "1" || selectedOption == "2" || selectedOption == "3" || selectedOption == "4" || selectedOption == "5")
+                {
+                    isInputValid = true;
+                }
+                else {
+                    Console.WriteLine($"{selectedOption} is not a valid option. Please choose 1 - 6");
+                }
+
+            } while (!isInputValid);
+
+            return selectedOption;
+
         }
         
         DisplayIntro();
-        DisplayMenu();
+        string selectedOption;
         Journal myJournal = new Journal();
         Entry myEntry = new Entry();
 
-        string selectedOption = Console.ReadLine();
-
-        while (selectedOption != "5"){
-            if (selectedOption == "1"){
-                myEntry.AddEntry();
-                DisplayMenu();
-                selectedOption = Console.ReadLine();
-            }
-            else if (selectedOption == "2"){
-                myEntry.Display();
-                DisplayMenu();
-                selectedOption = Console.ReadLine();
-            }
-            else if (selectedOption == "3"){
-                myJournal.LoadFromFile();
-                DisplayMenu();
-                selectedOption = Console.ReadLine();
-            }
-            else if (selectedOption == "4"){
-                myJournal.SaveToFile();
-                DisplayMenu();
-                selectedOption = Console.ReadLine();
-            }
-            else if (selectedOption == "5"){
-                break;
-            }
-
-        }
+        do
+        {
+            selectedOption = DisplayMenu();
+            switch (selectedOption)
+            {
+                case "1":
+                    myEntry.AddEntry();
+                    break;
+                case "2":
+                    myEntry.Display();
+                    break;
+                case "3":
+                    myJournal.UserFile();
+                    myJournal.LoadFromFile();
+                    break;
+                case "4":
+                    myJournal.UserFile();
+                    myJournal.SaveToFile();
+                    break;
+                case "5":
+                    myJournal.UserFile();
+                    myJournal.ClearJournal();
+                    break;
+                default:
+                    break;
+            }   
+        } while (selectedOption != "7");
 
     }
 }

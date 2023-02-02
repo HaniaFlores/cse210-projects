@@ -2,6 +2,7 @@
 using System.IO;
 public class Journal
 {
+    public List<string> _entries = new List<string>();
 
     public string _journalFile = "";
 
@@ -12,55 +13,44 @@ public class Journal
 
     public void ClearJournal()
     {
-        File.WriteAllText(UserFile(), "");
+        File.WriteAllText(_journalFile, "");
         Console.WriteLine("\nJournal Cleared");
     }
 
     public void SaveToFile()
     {
-        string filename = UserFile();
-        if (!File.Exists(filename))
+        if (!File.Exists(_journalFile))
         {
-            CreateJournalFile(filename);
-            Entry myEntry = new Entry();
-            foreach (string i in myEntry._localJournal)
+            CreateJournalFile(_journalFile);
+            foreach (string i in _entries)
             {
-                File.AppendAllText(filename, i);
+                File.WriteAllText(_journalFile, i);
             }
             Console.WriteLine("\nThe Journal has been modified!");
         }
-        else {
-            Entry myEntry = new Entry();
-            foreach (string i in myEntry._localJournal)
+        else
+        {
+            foreach (string i in _entries)
             {
-                File.AppendAllText(filename, i);
+                File.WriteAllText(_journalFile, i);
             }
             Console.WriteLine("\nThe Journal has been modified!");
         }
-        
     }
 
     public void LoadFromFile()
     {
-        _journalFile = UserFile();
         string journalText = File.ReadAllText(_journalFile);
         Console.WriteLine("\n=== Journal Contents ===");
         Console.WriteLine(journalText);
         Console.WriteLine("===========================");
     }
 
-    public string UserFile()
+    public void UserFile()
     {
-        Console.WriteLine("Insert the filename ex.(MyJournal.txt)");
+        Console.WriteLine("Insert the filename ex.(MyJournal)");
         string filename = Console.ReadLine();
-        if (filename.EndsWith(".txt"))
-        {
-            return filename;
-        }
-        else {
-            Console.WriteLine("Please enter a valid text filename.");
-            filename = Console.ReadLine();
-            return filename;
-        }
+        _journalFile = filename + ".txt";
+
     }
 }
