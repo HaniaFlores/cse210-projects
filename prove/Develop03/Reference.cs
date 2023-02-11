@@ -23,13 +23,7 @@ class Reference
         _endVerse = endVerse;
     }
 
-    //Setters and Getters
-    public string GetBook() { return _book; }
-    public int GetChapter() { return _chapter; }
-    public int GetVerse() { return _verse; }
-    public int GetEndVerse() { return _endVerse; }
-
-    //Method
+    //Behaviors
     public string GetReferenceString()
     {
         if(_endVerse == _verse) {

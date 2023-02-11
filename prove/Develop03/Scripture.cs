@@ -3,7 +3,6 @@ class Scripture
     //Member Variables
     private Reference _reference;
     private List<Word> _words;
-    private int _hiddenWordsCount;
 
     //Constructors
     public Scripture(Reference reference, string text)
@@ -22,12 +21,13 @@ class Scripture
     public void HideWords()
     {
         Random random = new Random();
-        int wordIndex = random.Next(_words.Count);
-        if(!_words[wordIndex].IsHidden())
+        //randomly select only those words that are not already hidden.
+        Word wordToHide = _words[random.Next(0, _words.Count)];
+        while (wordToHide.IsHidden())
         {
-            _words[wordIndex].Hide();
-            _hiddenWordsCount++;
+            wordToHide = _words[random.Next(0, _words.Count)];
         }
+        wordToHide.Hide();
     }
 
     public string GetRenderedText()
@@ -42,6 +42,6 @@ class Scripture
 
     public bool IsCompletelyHidden()
     {
-        return _hiddenWordsCount == _words.Count;
+        return _words.All(word => word.IsHidden());
     }
 }

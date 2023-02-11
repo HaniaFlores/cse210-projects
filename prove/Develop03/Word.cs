@@ -8,19 +8,11 @@ class Word {
         _word = word;
         _isHidden = false;
     }
-    public Word(string word, bool status) {
-        _word = word;
-        _isHidden = status;
-    }
 
     //Behaviors
     public void Hide()
     {
         _isHidden = true;
-    }
-    public void Show()
-    {
-        _isHidden = false;
     }
     public bool IsHidden()
     {
@@ -32,7 +24,6 @@ class Word {
         {
             return "___";
         }
-        return _word;
+        else { return _word; }
     }
-
 }
