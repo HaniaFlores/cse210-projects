@@ -27,12 +27,12 @@ public class Activity
     public void DisplayEndMessage()
     {
         Console.WriteLine("\nWell Done!!");
-        Thread.Sleep(1000);
+        ShowSpinner();
         Console.WriteLine($"You have completed another {_duration} seconds of the {_activityName} Activity.");
-        Thread.Sleep(1000);
+        ShowSpinner();
     }
     
-    public void ShowSpinner()
+    public void ShowSpinner(int seconds = 3)
     {
         List<string> animationList = new List<string>{};
         animationList.Add("|");
@@ -45,13 +45,13 @@ public class Activity
         animationList.Add("\\");
 
         DateTime startTime = DateTime.Now;
-        DateTime endTime = startTime.AddSeconds(5);
+        DateTime endTime = startTime.AddSeconds(seconds);
         int i = 0;
 
         while (DateTime.Now < endTime)
         {
             Console.Write(animationList[i]);
-            Thread.Sleep(500);
+            Thread.Sleep(400);
             Console.Write("\b \b");
             i++;
 
