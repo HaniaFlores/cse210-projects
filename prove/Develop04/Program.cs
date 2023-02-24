@@ -56,6 +56,21 @@ class Program
                     Console.ReadKey();
                     break;
 
+                case 3:
+                    ListingActivity listing = new ListingActivity
+                    ("Listing", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
+                    endTime = GetEndTime(listing.GetDuration());
+                    while (DateTime.Now < endTime)
+                    {
+                        listing.RunActivity();
+                    }
+                    int items = listing.GetResponses();
+                    Console.WriteLine($"You have listed {items} items");
+                    listing.DisplayEndMessage();
+                    Console.Write("\nPress Enter to return to the Menu.");
+                    Console.ReadKey();
+                    break;
+
                 case 4:
                     Console.WriteLine("Goodbye. See you soon.");
                     break;
