@@ -49,13 +49,27 @@ public class ReflectingActivity : Activity
     public void DisplayPrompt()
     {
         Console.WriteLine("\nConsider the following prompt:");
-        Console.WriteLine($"\n--- {GetRandomPrompt()} ---");
+        Console.WriteLine($"\n --- {GetRandomPrompt()} ---");
         Console.WriteLine("\nWhen you have something in mind, press enter to continue.");
         Console.ReadKey();
     }
 
     public string GetRandomQuestion()
     {
+        /*      EXCEEDING REQUIREMENTS
+
+            Makes sure no random questions are selected until they have all
+            been used at least once in that session.
+
+            HashSet does not allow duplicates, that's why I have to clear it
+            once its length is the same as the list of questions.
+
+            do...while loop will continue choosing a random index if the
+            question is already in the HashSet.
+
+            Once a random question is selected, it will be added to the HashSet.
+        
+        */
         if (_usedQuestions.Count == _questions.Count)
         {
             _usedQuestions.Clear();

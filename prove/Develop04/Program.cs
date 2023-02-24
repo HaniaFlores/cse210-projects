@@ -61,7 +61,7 @@ class Program
                         listing.RunActivity();
                     }
                     int items = listing.GetResponses();
-                    Console.WriteLine($"You have listed {items} items");
+                    Console.WriteLine($"You have listed {items} items!");
                     listing.DisplayEndMessage();
                     break;
 
