@@ -43,9 +43,6 @@ class Program
                 case 2:
                     ReflectingActivity reflecting = new ReflectingActivity
                     ("Reflecting", "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.");
-                    Console.WriteLine("\nNow ponder on each of the following questions as they related to this experience.");
-                    Console.Write("You may begin in: ");
-                    reflecting.ShowCountdown(5);
                     Console.Clear();
 
                     endTime = GetEndTime(reflecting.GetDuration());

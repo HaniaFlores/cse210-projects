@@ -29,6 +29,10 @@ public class ReflectingActivity : Activity
         Console.WriteLine("Get ready...");
         base.ShowSpinner();
         DisplayPrompt();
+
+        Console.WriteLine("\nNow ponder on each of the following questions as they related to this experience.");
+        Console.Write("You may begin in: ");
+        base.ShowCountdown(5);
     }
 
     public void RunActivity()
