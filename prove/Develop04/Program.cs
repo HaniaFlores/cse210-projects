@@ -5,6 +5,18 @@ class Program
     static void Main(string[] args)
     {
         int response = 1;
+
+        //Function that returns the endTime for the activity.
+        static DateTime GetEndTime(int seconds)
+        {
+            DateTime startTime = DateTime.Now;
+            DateTime endTime = startTime.AddSeconds(seconds);
+            return endTime;
+        }
+
+        //Variable to hold the endTime.
+        DateTime endTime;
+
         while (response > 0 && response < 4) {
             //Menu Options
             Console.Clear();
@@ -16,21 +28,13 @@ class Program
             Console.Write("\nSelect a choice from the menu: ");
             response = Convert.ToInt32(Console.ReadLine());
 
-            //Function that returns the endTime for the activity.
-            static DateTime GetEndTime(int seconds)
-            {
-                DateTime startTime = DateTime.Now;
-                DateTime endTime = startTime.AddSeconds(seconds);
-                return endTime;
-            }
-
             Console.Clear();
             switch (response)
             {
                 case 1:
                     BreathingActivity breathing = new BreathingActivity
                     ("Breathing", "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.");
-                    DateTime endTime = GetEndTime(breathing.GetDuration());
+                    endTime = GetEndTime(breathing.GetDuration());
                     while (DateTime.Now < endTime)
                     {
                         breathing.RunActivity();
