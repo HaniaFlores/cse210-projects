@@ -14,10 +14,6 @@ public class ListingActivity : Activity
     public ListingActivity (string name, string description) : base (name, description)
     {
         base.DisplayStartMessage();
-        Thread.Sleep(500);
-        Console.Clear();
-        Console.WriteLine("Get ready...");
-        base.ShowSpinner();
         DisplayPrompt();
     }
 

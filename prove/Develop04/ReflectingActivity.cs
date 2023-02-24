@@ -24,10 +24,6 @@ public class ReflectingActivity : Activity
     {
         //Where the program starts
         base.DisplayStartMessage();
-        Thread.Sleep(1000);
-        Console.Clear();
-        Console.WriteLine("Get ready...");
-        base.ShowSpinner();
         DisplayPrompt();
 
         Console.WriteLine("\nNow ponder on each of the following questions as they related to this experience.");

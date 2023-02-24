@@ -22,6 +22,10 @@ public class Activity
         Console.Write("\nHow long, in seconds, would you like for your session? ");
         _duration = Convert.ToInt32(Console.ReadLine());
 
+        Thread.Sleep(500);
+        Console.Clear();
+        Console.WriteLine("Get ready...");
+        ShowSpinner();
     }
 
     public void DisplayEndMessage()
@@ -30,6 +34,9 @@ public class Activity
         ShowSpinner();
         Console.WriteLine($"You have completed another {_duration} seconds of the {_activityName} Activity.");
         ShowSpinner();
+
+        Console.Write("\nPress Enter to return to the Menu.");
+        Console.ReadKey();
     }
     
     public void ShowSpinner(int seconds = 3)

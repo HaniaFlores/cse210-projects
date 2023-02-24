@@ -7,10 +7,6 @@ public class BreathingActivity : Activity
     {
         base.DisplayStartMessage();
         Thread.Sleep(1000);
-        Console.Clear();
-        Console.WriteLine("Get ready...");
-        base.ShowSpinner();
-        Thread.Sleep(1000);
 
     }
 

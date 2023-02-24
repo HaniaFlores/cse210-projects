@@ -36,8 +36,6 @@ class Program
                         breathing.RunActivity();
                     }
                     breathing.DisplayEndMessage();
-                    Console.Write("\nPress Enter to return to the Menu.");
-                    Console.ReadKey();
                     break;
                 
                 case 2:
@@ -52,8 +50,6 @@ class Program
                         Console.WriteLine();
                     }
                     reflecting.DisplayEndMessage();
-                    Console.Write("\nPress Enter to return to the Menu.");
-                    Console.ReadKey();
                     break;
 
                 case 3:
@@ -67,8 +63,6 @@ class Program
                     int items = listing.GetResponses();
                     Console.WriteLine($"You have listed {items} items");
                     listing.DisplayEndMessage();
-                    Console.Write("\nPress Enter to return to the Menu.");
-                    Console.ReadKey();
                     break;
 
                 case 4:
