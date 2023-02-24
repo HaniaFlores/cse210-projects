@@ -31,8 +31,8 @@ public class ListingActivity : Activity
 
     public void DisplayPrompt()
     {
-        Console.WriteLine("List as many responses you can to the following prompt:");
-        Console.WriteLine($"\n--- {GetRandomPrompt()} ---");
+        Console.WriteLine("\nList as many responses you can to the following prompt:");
+        Console.WriteLine($"--- {GetRandomPrompt()} ---");
         Console.Write("You may begin in: ");
         base.ShowCountdown(5);
         Console.WriteLine();

@@ -33,10 +33,7 @@ public class Activity
         Console.WriteLine("\nWell Done!!");
         ShowSpinner();
         Console.WriteLine($"You have completed another {_duration} seconds of the {_activityName} Activity.");
-        ShowSpinner();
-
-        Console.Write("\nPress Enter to return to the Menu.");
-        Console.ReadKey();
+        ShowSpinner(5);
     }
     
     public void ShowSpinner(int seconds = 3)

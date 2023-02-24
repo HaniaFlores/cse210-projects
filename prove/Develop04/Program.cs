@@ -70,7 +70,10 @@ class Program
                     break;
             };
         };
-
-
+        
+        if (response <= 0 || response > 4)
+        {
+            Console.WriteLine("Please choose an option from 1-4.");
+        }
     }
 }

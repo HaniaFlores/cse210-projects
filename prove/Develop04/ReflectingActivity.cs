@@ -34,7 +34,7 @@ public class ReflectingActivity : Activity
     public void RunActivity()
     {
         DisplayQuestion();
-        base.ShowSpinner(15);
+        base.ShowSpinner(10);
     }
 
     Random random = new Random();
@@ -63,6 +63,4 @@ public class ReflectingActivity : Activity
     {
         Console.Write($"> {GetRandomQuestion()} ");
     }
-
-
 }
