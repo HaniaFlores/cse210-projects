@@ -42,6 +42,10 @@ public class ListingActivity : Activity
     {
         Console.Write("> ");
         string response = Console.ReadLine();
-        _responses++;
+        //Only increase _responses when the user has typed something.
+        if (!(response == "") && !(response == " "))
+        {
+            _responses++;
+        }
     }
 }

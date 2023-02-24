@@ -19,6 +19,7 @@ public class ReflectingActivity : Activity
         "What did you learn about yourself through this experience?",
         "How can you keep this experience in mind in the future?"
     };
+    private HashSet<string> _usedQuestions = new HashSet<string>();
 
     public ReflectingActivity(string name, string description) : base (name, description)
     {
@@ -55,8 +56,19 @@ public class ReflectingActivity : Activity
 
     public string GetRandomQuestion()
     {
-        int questionListIndex = random.Next(_questions.Count);
-        return _questions[questionListIndex];
+        if (_usedQuestions.Count == _questions.Count)
+        {
+            _usedQuestions.Clear();
+        }
+
+        string question;
+        do
+        {
+            question = _questions[random.Next(_questions.Count)];
+        } while (_usedQuestions.Contains(question));
+
+        _usedQuestions.Add(question);
+        return question;
     }
 
     public void DisplayQuestion()
