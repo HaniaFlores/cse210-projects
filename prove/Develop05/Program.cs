@@ -4,7 +4,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        /* List<Goal> goals = new List<Goal>(); */
         int runningScore = 0;
         int response = 1;
         Data data = new Data();
@@ -55,21 +54,24 @@ class Program
                     Console.WriteLine("\n   ---- A new goal has been added to the list! ----");
                     Thread.Sleep(1000);
                     Console.Clear();
-
                     break;
+
                 case 2:
                     data.DisplayGoals();
                     Console.WriteLine();
                     break;
+
                 case 3:
                     data.SaveToFile(runningScore);
                     break;
+
                 case 4:
                     data.LoadFromFile();
                     runningScore = data.GetScore();
-                    Console.WriteLine("Data loaded. Now you can display your goals in the console.");
+                    Console.WriteLine(" ---- Data loaded. Now you can display your goals in the console. ----");
                     Console.WriteLine();
                     break;
+
                 case 5:
                     data.DisplayGoals(false);
                     Console.Write("Which goal did you accomplish? ");
@@ -80,6 +82,7 @@ class Program
                     Console.WriteLine($"You now have {runningScore} points.");
                     Console.WriteLine();
                     break;
+                    
                 case 6:
                     Console.Write("Did you save the data in a file? ");
                     string saved = Console.ReadLine().Trim();
