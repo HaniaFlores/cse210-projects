@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        List<Goal> goals = new List<Goal>();
+        /* List<Goal> goals = new List<Goal>(); */
         int runningScore = 0;
         int response = 1;
         Data data = new Data();
@@ -30,7 +30,7 @@ class Program
             switch (response)
             {
                 case 1:
-                    Console.WriteLine("\nThe types of Goals are:");
+                    Console.WriteLine("The types of Goals are:");
                     Console.WriteLine("1. Simple Goal");
                     Console.WriteLine("2. Eternal Goal");
                     Console.WriteLine("3. Checklist Goal");
@@ -53,7 +53,7 @@ class Program
                         data.AddGoal(simple);
                     }
                     Console.WriteLine("\n   ---- A new goal has been added to the list! ----");
-                    Thread.Sleep(1100);
+                    Thread.Sleep(1000);
                     Console.Clear();
 
                     break;
@@ -66,6 +66,7 @@ class Program
                     break;
                 case 4:
                     data.LoadFromFile();
+                    runningScore = data.GetScore();
                     Console.WriteLine("Data loaded. Now you can display your goals in the console.");
                     Console.WriteLine();
                     break;
@@ -75,11 +76,12 @@ class Program
                     int index = int.Parse(Console.ReadLine());
                     Goal selectedGoal = data.GetList()[index - 1];
                     selectedGoal.DisplayMessage();
-                    runningScore += selectedGoal.GetScore();
+                    runningScore += selectedGoal.GetPoints();
+                    Console.WriteLine($"You now have {runningScore} points.");
                     Console.WriteLine();
                     break;
                 case 6:
-                    Console.Write("\nDid you save the data in a file? ");
+                    Console.Write("Did you save the data in a file? ");
                     string saved = Console.ReadLine().Trim();
                     if (saved == "No" || saved == "no")
                     {
@@ -88,7 +90,7 @@ class Program
                     break;
             }
         }
-        Console.WriteLine("Thanks for using the program. See you later!");
+        Console.WriteLine("\nThanks for using the program. See you later!");
     }
 
 }
