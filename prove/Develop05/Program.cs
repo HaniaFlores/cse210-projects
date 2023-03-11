@@ -39,16 +39,21 @@ class Program
                     //If statements
                     if (selection == "1" || selection == "Simple Goal")
                     {
-                        List<string> info = NewGoal();
-                        SimpleGoal simple = new SimpleGoal(info[0], info[1], Convert.ToInt32(info[2]));
+                        SimpleGoal simple = new SimpleGoal(NewGoal());
                         goals.Add(simple);
                     }
                     break;
                 case 2:
                     Console.WriteLine("Your goals are:");
-                    foreach(Goal goal in goals)
+                    int i = 1;
+                    while (i <= goals.Count())
                     {
-                        goal.Display();
+                        foreach (Goal goal in goals)
+                        {
+                            Console.Write(i + ".");
+                            goal.Display();
+                            i++;
+                        }
                     }
                     Console.WriteLine();
                     break;
