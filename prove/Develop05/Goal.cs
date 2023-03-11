@@ -7,12 +7,11 @@ public abstract class Goal
     private bool _completed;
     private int _score = 0;
 
-    public Goal(List<string> goalInfo)
+    public Goal(string title, string description, int points)
     {
-        _title = goalInfo[0];
-        _description = goalInfo[1];
-        _points = int.Parse(goalInfo[2]);
-        _completed = false;
+        _title = title;
+        _description = description;
+        _points = points;
     }
 
     public string GetTitle() { return _title.Trim(); }
@@ -22,6 +21,7 @@ public abstract class Goal
     public int GetScore() { return _score; }
 
     public void SetCompleted(bool status) { _completed = status; }
+    public bool GetCompleted() { return _completed; }
 
     public void SetGoalType(string goalType) { _goalType = goalType; }
 
@@ -31,6 +31,7 @@ public abstract class Goal
     {
         return $"{_goalType}:{_title},{_description},{_points}";
     }
+
 
     public void AddPoints() { _score += _points; }
 
