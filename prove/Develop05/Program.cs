@@ -58,6 +58,9 @@ class Program
                     Console.WriteLine();
                     break;
                 case 3:
+                    Console.Write("What is the filename for the goal file? ");
+                    string filename = Console.ReadLine();
+                    SaveToFile(goals, filename, runningScore);
                     break;
                 case 4:
                     break;
@@ -82,5 +85,17 @@ class Program
         goalInfo.Add(Console.ReadLine());
 
         return goalInfo;
+    }
+
+    static void SaveToFile(List<Goal> goals, string filename, int score)
+    {
+        using (StreamWriter outputFile = new StreamWriter(filename))
+        {
+            outputFile.WriteLine(score);
+            foreach (Goal goal in goals)
+            {
+                outputFile.WriteLine(goal.SaveGoal());
+            }
+        }
     }
 }

@@ -1,9 +1,9 @@
 public abstract class Goal
 {
-    private string _goalType;
+    protected string _goalType;
     private string _title;
     private string _description;
-    private int _points;
+    protected int _points;
     private bool _completed;
     private int _score = 0;
 
@@ -26,6 +26,11 @@ public abstract class Goal
     public void SetGoalType(string goalType) { _goalType = goalType; }
 
     public abstract void Display();
+
+    public virtual string SaveGoal()
+    {
+        return $"{_goalType}:{_title},{_description},{_points}";
+    }
 
     public void AddPoints() { _score += _points; }
 
