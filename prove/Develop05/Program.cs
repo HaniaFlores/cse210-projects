@@ -10,7 +10,7 @@ class Program
         int runningScore = 0;
         int response = 1;
 
-        while (response > 0 && response < 6)
+        while ((response > 0 && response < 6))
         {
 
             //Menu
@@ -23,7 +23,7 @@ class Program
             Console.WriteLine("5. Record Event");
             Console.WriteLine("6. Quit");
             Console.Write("Select a choice from the menu: ");
-            response = Convert.ToInt32(Console.ReadLine());
+            response = int.Parse(Console.ReadLine());
 
             //Swith Case
             switch (response)
@@ -93,19 +93,35 @@ class Program
 
     static void SaveToFile(List<Goal> goals, string filename, int score)
     {
-        using (StreamWriter outputFile = new StreamWriter(filename))
+
+        if (!File.Exists(filename))
         {
-            outputFile.WriteLine(score);
-            foreach (Goal goal in goals)
+            using (StreamWriter outputFile = new StreamWriter(filename))
             {
-                outputFile.WriteLine(goal.SaveGoal());
+                outputFile.WriteLine(score);
+                foreach (Goal goal in goals)
+                {
+                    outputFile.WriteLine(goal.SaveGoal());
+                }
             }
+            Console.WriteLine("The file has been created.");
+        }
+        else {
+            using (StreamWriter outputFile = new StreamWriter(filename, true)) //without true the file will be overwriten if the user decides to save it before loading it.
+            {
+                /* outputFile.WriteLine(score); */
+                foreach (Goal goal in goals)
+                {
+                    outputFile.WriteLine(goal.SaveGoal());
+                }
+            }
+            Console.WriteLine("The file has been updated.");
         }
     }
 
     static List<Goal> LoadFromFile(string filename)
     {
-        string [] lines = System.IO.File.ReadAllLines(filename);
+        string [] lines = File.ReadAllLines(filename);
         List<Goal> loadedGoals = new List<Goal>();
         foreach (string line in lines.Skip(1))
         {
