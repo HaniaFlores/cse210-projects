@@ -7,7 +7,12 @@ public class EternalGoal : Goal
 
     public override void DisplayMessage()
     {
-        Console.WriteLine($"Congratulations! You have earned {_points} points!");
+        Console.WriteLine($"Congratulations! You have earned {GetPoints()} points!");
+    }
+
+    public override string SaveGoal()
+    {
+        return $"{_goalType}:{GetTitle()},{GetDescription()},{GetPoints()}";
     }
 
 }

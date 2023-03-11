@@ -56,6 +56,20 @@ class Program
                         EternalGoal eternal = new EternalGoal(title,desc,points);
                         data.AddGoal(eternal);
                     }
+                    else if (selection == "3" || selection == "Simple Goal")
+                    {
+                        Console.Write("How many times does this goal need to be accomplished for a bonus? ");
+                        int target = int.Parse(Console.ReadLine());
+
+                        Console.Write("What is the bonus for accomplishing it that many times? ");
+                        int bonus = int.Parse(Console.ReadLine());
+
+                        ChecklistGoal checklist = new ChecklistGoal(title,desc,points,bonus,target);
+                        data.AddGoal(checklist);
+                    }
+                    else {
+                        break;
+                    }
                     Console.WriteLine("\n   ---- A new goal has been added to the list! ----");
                     Thread.Sleep(1000);
                     Console.Clear();

@@ -75,8 +75,10 @@ public class Data
                     break;
                 case "ChecklistGoal":
                     int bonus = int.Parse(parts[3]);
-                    int times = int.Parse(parts[4]);
-                    int _completed = int.Parse(parts[5]);
+                    int target = int.Parse(parts[4]);
+                    int count = int.Parse(parts[5]);
+                    ChecklistGoal checklist = new ChecklistGoal(title,desc,points,bonus,target,count);
+                    _data.Add(checklist);
                     break;
             }
         }

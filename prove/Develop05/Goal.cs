@@ -3,7 +3,7 @@ public abstract class Goal
     protected string _goalType;
     private string _title;
     private string _description;
-    protected int _points;
+    private int _points;
     private bool _completed;
     /* private int _score = 0; */
 
@@ -38,10 +38,7 @@ public abstract class Goal
     }
 
 
-    public virtual string SaveGoal()
-    {
-        return $"{_goalType}:{_title},{_description},{_points}";
-    }
+    public abstract string SaveGoal();
 
     public string RecordEvent()
     {
