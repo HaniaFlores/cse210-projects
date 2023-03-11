@@ -4,12 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop05 World!");
-
         List<Goal> goals = new List<Goal>();
         int runningScore = 0;
         int response = 1;
 
+        Console.Clear();
         while ((response > 0 && response < 6))
         {
 
@@ -24,6 +23,7 @@ class Program
             Console.WriteLine("6. Quit");
             Console.Write("Select a choice from the menu: ");
             response = int.Parse(Console.ReadLine());
+            Console.Clear();
 
             //Swith Case
             switch (response)
@@ -51,6 +51,10 @@ class Program
                         SimpleGoal simple = new SimpleGoal(title,desc,points);
                         goals.Add(simple);
                     }
+                    Console.WriteLine("\n   ---- A new goal has been added to the list! ----");
+                    Thread.Sleep(1100);
+                    Console.Clear();
+
                     break;
                 case 2:
                     DisplayGoals(goals);
@@ -66,6 +70,7 @@ class Program
                     filename = Console.ReadLine();
                     goals = LoadFromFile(filename);
                     Console.WriteLine("Data loaded. Now you can display your goals in the console.");
+                    Console.WriteLine();
                     break;
                 case 5:
                     DisplayGoals(goals, false);
@@ -75,10 +80,19 @@ class Program
                     selectedGoal.DisplayMessage();
                     Console.WriteLine();
                     break;
-                default:
+                case 6:
+                    Console.Write("\nDid you save the data in a file? ");
+                    string saved = Console.ReadLine().Trim();
+                    if (saved == "No" || saved == "no")
+                    {
+                        Console.Write("What is the filename for the goal file? ");
+                        filename = Console.ReadLine();
+                        SaveToFile(goals, filename, runningScore);
+                    }
                     break;
             }
         }
+        Console.WriteLine("Thanks for using the program. See you later!");
     }
 
 /*     static List<string> NewGoal()
@@ -98,29 +112,37 @@ class Program
 
     static void SaveToFile(List<Goal> goals, string filename, int score)
     {
+        using (StreamWriter outputFile = new StreamWriter(filename))
+        {
+            outputFile.WriteLine(score);
+            foreach (Goal goal in goals)
+            {
+                outputFile.WriteLine(goal.SaveGoal());
+            }
+        }
 
         if (!File.Exists(filename))
         {
-            using (StreamWriter outputFile = new StreamWriter(filename))
+            /* using (StreamWriter outputFile = new StreamWriter(filename))
             {
                 outputFile.WriteLine(score);
                 foreach (Goal goal in goals)
                 {
                     outputFile.WriteLine(goal.SaveGoal());
                 }
-            }
-            Console.WriteLine("The file has been created.");
+            } */
+            Console.WriteLine(" ---- The file has been created. ----");
         }
         else {
-            using (StreamWriter outputFile = new StreamWriter(filename)) //without true the file will be overwriten if the user decides to save it before loading it.
+            /* using (StreamWriter outputFile = new StreamWriter(filename)) //without true the file will be overwriten if the user decides to save it before loading it.
             {
-                /* outputFile.WriteLine(score); */
+                outputFile.WriteLine(score);
                 foreach (Goal goal in goals)
                 {
                     outputFile.WriteLine(goal.SaveGoal());
                 }
-            }
-            Console.WriteLine("The file has been updated.");
+            } */
+            Console.WriteLine(" ---- The file has been updated. ----");
         }
     }
 
