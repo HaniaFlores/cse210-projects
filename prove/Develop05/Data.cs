@@ -65,11 +65,13 @@ public class Data
             {
                 case "SimpleGoal":
                     bool status = bool.Parse(parts[3]);
-                    SimpleGoal goal1 = new SimpleGoal(title, desc, points, status);
+                    SimpleGoal simple = new SimpleGoal(title, desc, points, status);
                     /* goal1.SetScore(_score); */
-                    _data.Add(goal1);
+                    _data.Add(simple);
                     break;
                 case "EternalGoal":
+                    EternalGoal eternal = new EternalGoal(title, desc, points);
+                    _data.Add(eternal);
                     break;
                 case "ChecklistGoal":
                     int bonus = int.Parse(parts[3]);

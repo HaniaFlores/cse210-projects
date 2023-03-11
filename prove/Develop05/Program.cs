@@ -51,6 +51,11 @@ class Program
                         SimpleGoal simple = new SimpleGoal(title,desc,points);
                         data.AddGoal(simple);
                     }
+                    else if (selection == "2" || selection == "Eternal Goal")
+                    {
+                        EternalGoal eternal = new EternalGoal(title,desc,points);
+                        data.AddGoal(eternal);
+                    }
                     Console.WriteLine("\n   ---- A new goal has been added to the list! ----");
                     Thread.Sleep(1000);
                     Console.Clear();
@@ -78,11 +83,12 @@ class Program
                     int index = int.Parse(Console.ReadLine());
                     Goal selectedGoal = data.GetList()[index - 1];
                     selectedGoal.DisplayMessage();
-                    runningScore += selectedGoal.GetPoints();
+                    /* runningScore += selectedGoal.GetPoints(); */
+                    runningScore = AddPoints(runningScore, selectedGoal);
                     Console.WriteLine($"You now have {runningScore} points.");
                     Console.WriteLine();
                     break;
-                    
+
                 case 6:
                     Console.Write("Did you save the data in a file? ");
                     string saved = Console.ReadLine().Trim();
@@ -94,6 +100,12 @@ class Program
             }
         }
         Console.WriteLine("\nThanks for using the program. See you later!");
+    }
+
+    static int AddPoints(int score, Goal goal)
+    {
+        score += goal.GetPoints();
+        return score;
     }
 
 }

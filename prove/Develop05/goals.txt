@@ -1,0 +1,4 @@
+230
+SimpleGoal:simple1,desc1,30,True
+EternalGoal:eternal1,desc1,50
+EternalGoal:eternal2,desc2,100

@@ -58,7 +58,7 @@ public abstract class Goal
     // public abstract void AddGoal();
     // public abstract void RecordEvent();
     // public abstract bool IsComplete(); //will return the status.
-    public void DisplayMessage()
+    public virtual void DisplayMessage()
     {
         Console.WriteLine($"Congratulations! You have earned {_points} points!");
         /* AddPoints(); */
