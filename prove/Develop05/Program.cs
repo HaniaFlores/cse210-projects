@@ -112,36 +112,28 @@ class Program
 
     static void SaveToFile(List<Goal> goals, string filename, int score)
     {
-        using (StreamWriter outputFile = new StreamWriter(filename))
-        {
-            outputFile.WriteLine(score);
-            foreach (Goal goal in goals)
-            {
-                outputFile.WriteLine(goal.SaveGoal());
-            }
-        }
 
         if (!File.Exists(filename))
         {
-            /* using (StreamWriter outputFile = new StreamWriter(filename))
+            using (StreamWriter outputFile = new StreamWriter(filename))
             {
                 outputFile.WriteLine(score);
                 foreach (Goal goal in goals)
                 {
                     outputFile.WriteLine(goal.SaveGoal());
                 }
-            } */
+            }
             Console.WriteLine(" ---- The file has been created. ----");
         }
         else {
-            /* using (StreamWriter outputFile = new StreamWriter(filename)) //without true the file will be overwriten if the user decides to save it before loading it.
+            using (StreamWriter outputFile = new StreamWriter(filename)) //without true the file will be overwriten if the user decides to save it before loading it.
             {
                 outputFile.WriteLine(score);
                 foreach (Goal goal in goals)
                 {
                     outputFile.WriteLine(goal.SaveGoal());
                 }
-            } */
+            }
             Console.WriteLine(" ---- The file has been updated. ----");
         }
     }
