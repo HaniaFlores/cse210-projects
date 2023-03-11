@@ -3,7 +3,7 @@ public class Data
     private List<Goal> _data = new List<Goal>();
     private string _filename;
 
-    public void SaveToFile(List<Goal> goals, int score)
+    public void SaveToFile(int score)
     {
         SetFilename();
         if (!File.Exists(_filename))
@@ -11,7 +11,7 @@ public class Data
             using (StreamWriter outputFile = new StreamWriter(_filename))
             {
                 outputFile.WriteLine(score);
-                foreach (Goal goal in goals)
+                foreach (Goal goal in _data)
                 {
                     outputFile.WriteLine(goal.SaveGoal());
                 }
@@ -23,7 +23,7 @@ public class Data
             using (StreamWriter outputFile = new StreamWriter(_filename)) //without true the file will be overwriten if the user decides to save it before loading it.
             {
                 outputFile.WriteLine(score);
-                foreach (Goal goal in goals)
+                foreach (Goal goal in _data)
                 {
                     outputFile.WriteLine(goal.SaveGoal());
                 }
@@ -32,11 +32,10 @@ public class Data
         }
     }
 
-    public List<Goal> LoadFromFile()
+    public void LoadFromFile()
     {
         SetFilename();
         string[] lines = File.ReadAllLines(_filename);
-        List<Goal> loadedGoals = new List<Goal>();
         foreach (string line in lines.Skip(1))
         {
             string goalType = line.Substring(0, line.IndexOf(":"));
@@ -51,7 +50,7 @@ public class Data
                     bool status = bool.Parse(parts[3]);
                     SimpleGoal goal1 = new SimpleGoal(title, desc, points, status);
                     goal1.SetScore(int.Parse(lines[0]));
-                    loadedGoals.Add(goal1);
+                    _data.Add(goal1);
                     break;
                 case "EternalGoal":
                     break;
@@ -62,16 +61,15 @@ public class Data
                     break;
             }
         }
-        return loadedGoals;
     }
 
-    public void DisplayGoals(List<Goal> goals, bool mark = true)
+    public void DisplayGoals(bool mark = true)
     {
         int i = 1;
         Console.WriteLine("\nYour goals are:");
-        while (i <= goals.Count())
+        while (i <= _data.Count())
         {
-            foreach (Goal goal in goals)
+            foreach (Goal goal in _data)
             {
                 Console.Write(i + ". ");
                 goal.Display(mark);
@@ -84,5 +82,14 @@ public class Data
     {
         Console.Write("What is the filename for the goal file? ");
         _filename = Console.ReadLine();
-    }    
+    }  
+
+    public void AddGoal(Goal goal) {
+        _data.Add(goal);
+    }
+
+    public List<Goal> GetList()
+    {
+        return _data;
+    }  
 }

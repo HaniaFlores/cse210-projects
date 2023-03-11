@@ -50,7 +50,7 @@ class Program
                     if (selection == "1" || selection == "Simple Goal")
                     {
                         SimpleGoal simple = new SimpleGoal(title,desc,points);
-                        goals.Add(simple);
+                        data.AddGoal(simple);
                     }
                     Console.WriteLine("\n   ---- A new goal has been added to the list! ----");
                     Thread.Sleep(1100);
@@ -58,24 +58,24 @@ class Program
 
                     break;
                 case 2:
-                    data.DisplayGoals(goals);
+                    data.DisplayGoals();
                     Console.WriteLine();
                     break;
                 case 3:
-                    data.SaveToFile(goals,runningScore);
+                    data.SaveToFile(runningScore);
                     break;
                 case 4:
-                    goals = data.LoadFromFile();
+                    data.LoadFromFile();
                     Console.WriteLine("Data loaded. Now you can display your goals in the console.");
                     Console.WriteLine();
                     break;
                 case 5:
-                    data.DisplayGoals(goals, false);
+                    data.DisplayGoals(false);
                     Console.Write("Which goal did you accomplish? ");
                     int index = int.Parse(Console.ReadLine());
-                    Goal selectedGoal = goals[index - 1];
+                    Goal selectedGoal = data.GetList()[index - 1];
                     selectedGoal.DisplayMessage();
-                    runningScore = selectedGoal.GetScore();
+                    runningScore += selectedGoal.GetScore();
                     Console.WriteLine();
                     break;
                 case 6:
@@ -83,7 +83,7 @@ class Program
                     string saved = Console.ReadLine().Trim();
                     if (saved == "No" || saved == "no")
                     {
-                        data.SaveToFile(goals, runningScore);
+                        data.SaveToFile(runningScore);
                     }
                     break;
             }
