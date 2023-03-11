@@ -7,6 +7,7 @@ class Program
         List<Goal> goals = new List<Goal>();
         int runningScore = 0;
         int response = 1;
+        Data data = new Data();
 
         Console.Clear();
         while ((response > 0 && response < 6))
@@ -57,23 +58,19 @@ class Program
 
                     break;
                 case 2:
-                    DisplayGoals(goals);
+                    data.DisplayGoals(goals);
                     Console.WriteLine();
                     break;
                 case 3:
-                    Console.Write("What is the filename for the goal file? ");
-                    string filename = Console.ReadLine();
-                    SaveToFile(goals, filename, runningScore);
+                    data.SaveToFile(goals,runningScore);
                     break;
                 case 4:
-                    Console.Write("What is the filename for the goal file? ");
-                    filename = Console.ReadLine();
-                    goals = LoadFromFile(filename);
+                    goals = data.LoadFromFile();
                     Console.WriteLine("Data loaded. Now you can display your goals in the console.");
                     Console.WriteLine();
                     break;
                 case 5:
-                    DisplayGoals(goals, false);
+                    data.DisplayGoals(goals, false);
                     Console.Write("Which goal did you accomplish? ");
                     int index = int.Parse(Console.ReadLine());
                     Goal selectedGoal = goals[index - 1];
@@ -86,9 +83,7 @@ class Program
                     string saved = Console.ReadLine().Trim();
                     if (saved == "No" || saved == "no")
                     {
-                        Console.Write("What is the filename for the goal file? ");
-                        filename = Console.ReadLine();
-                        SaveToFile(goals, filename, runningScore);
+                        data.SaveToFile(goals, runningScore);
                     }
                     break;
             }
@@ -96,93 +91,4 @@ class Program
         Console.WriteLine("Thanks for using the program. See you later!");
     }
 
-/*     static List<string> NewGoal()
-    {
-        List<string> goalInfo = new List<string>();
-        Console.Write("What is the name of your goal? ");
-        goalInfo.Add(Console.ReadLine());
-
-        Console.Write("What is a short description of it? ");
-        goalInfo.Add(Console.ReadLine());
-
-        Console.Write("What is the amount of points associated with this goal? ");
-        goalInfo.Add(Console.ReadLine());
-
-        return goalInfo;
-    } */
-
-    static void SaveToFile(List<Goal> goals, string filename, int score)
-    {
-
-        if (!File.Exists(filename))
-        {
-            using (StreamWriter outputFile = new StreamWriter(filename))
-            {
-                outputFile.WriteLine(score);
-                foreach (Goal goal in goals)
-                {
-                    outputFile.WriteLine(goal.SaveGoal());
-                }
-            }
-            Console.WriteLine(" ---- The file has been created. ----");
-        }
-        else {
-            using (StreamWriter outputFile = new StreamWriter(filename)) //without true the file will be overwriten if the user decides to save it before loading it.
-            {
-                outputFile.WriteLine(score);
-                foreach (Goal goal in goals)
-                {
-                    outputFile.WriteLine(goal.SaveGoal());
-                }
-            }
-            Console.WriteLine(" ---- The file has been updated. ----");
-        }
-    }
-
-    static List<Goal> LoadFromFile(string filename)
-    {
-        string [] lines = File.ReadAllLines(filename);
-        List<Goal> loadedGoals = new List<Goal>();
-        foreach (string line in lines.Skip(1))
-        {
-            string goalType = line.Substring(0,line.IndexOf(":"));
-            string[] parts = line.Split(",");
-            string title = parts[0].Substring(parts[0].IndexOf(":") + 1);
-            string desc = parts[1];
-            int points = int.Parse(parts[2]);
-
-            switch (goalType)
-            {
-                case "SimpleGoal":
-                    bool status = bool.Parse(parts[3]);
-                    SimpleGoal goal1 = new SimpleGoal(title,desc,points,status);
-                    goal1.SetScore(int.Parse(lines[0]));
-                    loadedGoals.Add(goal1);
-                    break;
-                case "EternalGoal":
-                    break;
-                case "ChecklistGoal":
-                    int bonus = int.Parse(parts[3]);
-                    int times = int.Parse(parts[4]);
-                    int _completed = int.Parse(parts[5]);
-                    break;
-            }
-        }
-        return loadedGoals;
-    }
-
-    static void DisplayGoals(List<Goal> goals, bool mark = true)
-    {
-        int i = 1;
-        Console.WriteLine("\nYour goals are:");
-        while (i <= goals.Count())
-        {
-            foreach (Goal goal in goals)
-            {
-                Console.Write(i + ". ");
-                goal.Display(mark);
-                i++;
-            }
-        }
-    }
 }
