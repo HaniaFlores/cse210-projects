@@ -15,9 +15,9 @@ public abstract class Goal
         _completed = false;
     }
 
-    public string GetTitle() { return _title; }
+    public string GetTitle() { return _title.Trim(); }
 
-    public string GetDescription() { return _description; }
+    public string GetDescription() { return _description.Trim(); }
 
     public int GetScore() { return _score; }
 
