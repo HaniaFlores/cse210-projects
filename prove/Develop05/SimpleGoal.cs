@@ -6,11 +6,6 @@ public class SimpleGoal : Goal
         base.SetCompleted(status);
     }
 
-    public override void Display()
-    {
-        Console.WriteLine($" {base.MarkAsCompleted()} {GetTitle()} ({GetDescription()})");
-    }
-
     public override string SaveGoal()
     {
         return $"{_goalType}:{base.GetTitle()},{base.GetDescription()},{_points},{base.GetCompleted()}";

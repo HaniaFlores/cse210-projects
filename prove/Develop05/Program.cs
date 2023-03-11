@@ -53,8 +53,7 @@ class Program
                     }
                     break;
                 case 2:
-                    Console.WriteLine("Your goals are:");
-                    ListGoals(goals);
+                    DisplayGoals(goals);
                     Console.WriteLine();
                     break;
                 case 3:
@@ -69,6 +68,12 @@ class Program
                     Console.WriteLine("Data loaded. Now you can display your goals in the console.");
                     break;
                 case 5:
+                    DisplayGoals(goals, false);
+                    Console.Write("Which goal did you accomplish? ");
+                    int index = int.Parse(Console.ReadLine());
+                    Goal selectedGoal = goals[index - 1];
+                    selectedGoal.DisplayMessage();
+                    Console.WriteLine();
                     break;
                 default:
                     break;
@@ -107,7 +112,7 @@ class Program
             Console.WriteLine("The file has been created.");
         }
         else {
-            using (StreamWriter outputFile = new StreamWriter(filename, true)) //without true the file will be overwriten if the user decides to save it before loading it.
+            using (StreamWriter outputFile = new StreamWriter(filename)) //without true the file will be overwriten if the user decides to save it before loading it.
             {
                 /* outputFile.WriteLine(score); */
                 foreach (Goal goal in goals)
@@ -150,15 +155,16 @@ class Program
         return loadedGoals;
     }
 
-    static void ListGoals(List<Goal> goals)
+    static void DisplayGoals(List<Goal> goals, bool mark = true)
     {
         int i = 1;
+        Console.WriteLine("\nYour goals are:");
         while (i <= goals.Count())
         {
             foreach (Goal goal in goals)
             {
-                Console.Write(i + ".");
-                goal.Display();
+                Console.Write(i + ". ");
+                goal.Display(mark);
                 i++;
             }
         }

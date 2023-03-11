@@ -25,11 +25,26 @@ public abstract class Goal
 
     public void SetGoalType(string goalType) { _goalType = goalType; }
 
-    public abstract void Display();
+    public virtual void Display(bool mark) {
+        if (mark == true)
+        {
+            Console.WriteLine($"{MarkAsCompleted()} {_title} ({_description})");
+        }
+        else
+        {
+            Console.WriteLine(_title);
+        }
+    }
+
 
     public virtual string SaveGoal()
     {
         return $"{_goalType}:{_title},{_description},{_points}";
+    }
+
+    public string RecordEvent()
+    {
+        return $"{_title} {_description}";
     }
 
 
@@ -44,7 +59,9 @@ public abstract class Goal
     public void DisplayMessage()
     {
         Console.WriteLine($"Congratulations! You have earned {_points} points!");
+        AddPoints();
         Console.WriteLine($"You now have {_score} points.");
+        _completed = true;
     }
 
     public string MarkAsCompleted()
