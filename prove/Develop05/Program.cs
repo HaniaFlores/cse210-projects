@@ -78,6 +78,7 @@ class Program
                     int index = int.Parse(Console.ReadLine());
                     Goal selectedGoal = goals[index - 1];
                     selectedGoal.DisplayMessage();
+                    runningScore = selectedGoal.GetScore();
                     Console.WriteLine();
                     break;
                 case 6:
@@ -155,6 +156,7 @@ class Program
                 case "SimpleGoal":
                     bool status = bool.Parse(parts[3]);
                     SimpleGoal goal1 = new SimpleGoal(title,desc,points,status);
+                    goal1.SetScore(int.Parse(lines[0]));
                     loadedGoals.Add(goal1);
                     break;
                 case "EternalGoal":

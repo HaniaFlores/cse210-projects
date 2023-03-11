@@ -19,6 +19,7 @@ public abstract class Goal
     public string GetDescription() { return _description.Trim(); }
 
     public int GetScore() { return _score; }
+    public void SetScore(int score) { _score = score; }
 
     public void SetCompleted(bool status) { _completed = status; }
     public bool GetCompleted() { return _completed; }
