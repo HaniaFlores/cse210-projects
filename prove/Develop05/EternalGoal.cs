@@ -2,7 +2,7 @@ public class EternalGoal : Goal
 {
     public EternalGoal (string title, string description, int points) : base (title, description,points)
     {
-        base._goalType = "EternalGoal";
+        SetGoalType("EternalGoal");
     }
 
     public override void DisplayMessage()
@@ -12,7 +12,7 @@ public class EternalGoal : Goal
 
     public override string SaveGoal()
     {
-        return $"{_goalType}:{GetTitle()},{GetDescription()},{GetPoints()}";
+        return $"{GetGoalType()}:{GetTitle()},{GetDescription()},{GetPoints()}";
     }
 
 }

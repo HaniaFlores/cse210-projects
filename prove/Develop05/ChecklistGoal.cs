@@ -6,7 +6,7 @@ public class ChecklistGoal : Goal
 
     public ChecklistGoal (string title, string description, int points, int bonus, int target, int count = 0, bool status = false) : base (title, description, points)
     {
-        _goalType = "ChecklistGoal";
+        SetGoalType("ChecklistGoal");
         _target = target;
         _bonus = bonus;
         _count = count;
@@ -20,7 +20,7 @@ public class ChecklistGoal : Goal
 
     public override string SaveGoal()
     {
-        return $"{_goalType}:{GetTitle()},{GetDescription()},{GetPoints()},{_bonus},{_target},{_count}";
+        return $"{GetGoalType()}:{GetTitle()},{GetDescription()},{GetPoints()},{_bonus},{_target},{_count}";
     }
 
     public override void Display(bool mark)

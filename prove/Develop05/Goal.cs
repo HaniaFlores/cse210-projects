@@ -1,6 +1,6 @@
 public abstract class Goal
 {
-    protected string _goalType;
+    private string _goalType;
     private string _title;
     private string _description;
     private int _points;
@@ -21,6 +21,7 @@ public abstract class Goal
     public bool GetCompleted() { return _completed; }
 
     public void SetGoalType(string goalType) { _goalType = goalType; }
+    public string GetGoalType() { return _goalType; }
 
     public virtual void Display(bool mark) {
         if (mark == true)
@@ -35,11 +36,11 @@ public abstract class Goal
 
 
     public abstract string SaveGoal();
-
+/* 
     public string RecordEvent()
     {
         return $"{_title} {_description}";
-    }
+    } */
 
     public int GetPoints() { return _points; }
 
