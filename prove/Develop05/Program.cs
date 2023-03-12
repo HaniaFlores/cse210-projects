@@ -9,6 +9,8 @@ class Program
         Data data = new Data();
 
         Console.Clear();
+        Console.WriteLine("Welcome to the Eternal Quest Program.\n");
+
         while ((response > 0 && response < 6))
         {
 
@@ -36,6 +38,7 @@ class Program
                     Console.Write("What type of goal would you like to create? ");
                     string selection = Console.ReadLine();
 
+                    //INPUTS
                     Console.Write("What is the name of your goal? ");
                     string title = Console.ReadLine();
 
@@ -45,31 +48,34 @@ class Program
                     Console.Write("What is the amount of points associated with this goal? ");
                     int points = int.Parse(Console.ReadLine());
 
-                    //If statements
-                    if (selection == "1" || selection == "Simple Goal")
+                    switch (selection)
                     {
-                        SimpleGoal simple = new SimpleGoal(title,desc,points);
-                        data.AddGoal(simple);
-                    }
-                    else if (selection == "2" || selection == "Eternal Goal")
-                    {
-                        EternalGoal eternal = new EternalGoal(title,desc,points);
-                        data.AddGoal(eternal);
-                    }
-                    else if (selection == "3" || selection == "Simple Goal")
-                    {
-                        Console.Write("How many times does this goal need to be accomplished for a bonus? ");
-                        int target = int.Parse(Console.ReadLine());
+                        case "1":
+                        case "Simple Goal":
+                            SimpleGoal simple = new SimpleGoal(title, desc, points);
+                            data.AddGoal(simple);
+                            break;
+                        
+                        case "2":
+                        case "Eternal Goal":
+                            EternalGoal eternal = new EternalGoal(title, desc, points);
+                            data.AddGoal(eternal);
+                            break;
+                        
+                        case "3":
+                        case "Checklist Goal":
+                            Console.Write("How many times does this goal need to be accomplished for a bonus? ");
+                            int target = int.Parse(Console.ReadLine());
 
-                        Console.Write("What is the bonus for accomplishing it that many times? ");
-                        int bonus = int.Parse(Console.ReadLine());
+                            Console.Write("What is the bonus for accomplishing it that many times? ");
+                            int bonus = int.Parse(Console.ReadLine());
 
-                        ChecklistGoal checklist = new ChecklistGoal(title,desc,points,bonus,target);
-                        data.AddGoal(checklist);
+                            ChecklistGoal checklist = new ChecklistGoal(title, desc, points, bonus, target);
+                            data.AddGoal(checklist);
+                            break;
+
                     }
-                    else {
-                        break;
-                    }
+
                     Console.WriteLine("\n   ---- A new goal has been added to the list! ----");
                     Thread.Sleep(1000);
                     Console.Clear();
@@ -96,12 +102,13 @@ class Program
                     Console.Write("Which goal did you accomplish? ");
                     int index = int.Parse(Console.ReadLine());
                     Goal selectedGoal = data.GetList()[index - 1];
-                    /* runningScore += selectedGoal.GetPoints(); */
+                    
                     if (selectedGoal.GetCompleted() == true)
                     {
                         Console.WriteLine("This goal has been completed already. Try another one.");
                     }
                     else {
+                        Console.WriteLine();
                         selectedGoal.DisplayMessage();
                         runningScore = AddPoints(runningScore, selectedGoal);
                         Console.WriteLine($"You now have {runningScore} points.");
@@ -110,6 +117,7 @@ class Program
                     break;
 
                 case 6:
+                    Console.Clear();
                     Console.Write("Did you save the data in a file? ");
                     string saved = Console.ReadLine().Trim();
                     if (saved == "No" || saved == "no")

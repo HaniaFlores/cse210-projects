@@ -26,7 +26,7 @@ public class Data
         }
         else
         {
-            using (StreamWriter outputFile = new StreamWriter(_filename)) //without true the file will be overwriten if the user decides to save it before loading it.
+            using (StreamWriter outputFile = new StreamWriter(_filename))
             {
                 outputFile.WriteLine(score);
                 foreach (Goal goal in _data)
@@ -82,34 +82,6 @@ public class Data
                     break;
             }
         }
-
-
-        /* string[] lines = File.ReadAllLines(_filename);
-        foreach (string line in lines.Skip(1))
-        {
-            string goalType = line.Substring(0, line.IndexOf(":"));
-            string[] parts = line.Split(",");
-            string title = parts[0].Substring(parts[0].IndexOf(":") + 1);
-            string desc = parts[1];
-            int points = int.Parse(parts[2]);
-
-            switch (goalType)
-            {
-                case "SimpleGoal":
-                    bool status = bool.Parse(parts[3]);
-                    SimpleGoal goal1 = new SimpleGoal(title, desc, points, status);
-                    goal1.SetScore(int.Parse(lines[0]));
-                    _data.Add(goal1);
-                    break;
-                case "EternalGoal":
-                    break;
-                case "ChecklistGoal":
-                    int bonus = int.Parse(parts[3]);
-                    int times = int.Parse(parts[4]);
-                    int _completed = int.Parse(parts[5]);
-                    break;
-            }
-        } */
     }
 
     public void DisplayGoals(bool mark = true)

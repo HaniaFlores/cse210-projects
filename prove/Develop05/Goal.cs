@@ -5,7 +5,6 @@ public abstract class Goal
     private string _description;
     private int _points;
     private bool _completed;
-    /* private int _score = 0; */
 
     public Goal(string title, string description, int points)
     {
@@ -17,9 +16,6 @@ public abstract class Goal
     public string GetTitle() { return _title.Trim(); }
 
     public string GetDescription() { return _description.Trim(); }
-
-    /* public int GetScore() { return _score; }
-    public void SetScore(int score) {_score = score;} */
 
     public void SetCompleted(bool status) { _completed = status; }
     public bool GetCompleted() { return _completed; }
@@ -45,20 +41,11 @@ public abstract class Goal
         return $"{_title} {_description}";
     }
 
-
-    /* public void AddPoints() { _score += _points; } */
     public int GetPoints() { return _points; }
 
-    // public int GetScore() {
-    //     return _score;
-    // }
-    // public abstract void AddGoal();
-    // public abstract void RecordEvent();
-    // public abstract bool IsComplete(); //will return the status.
     public virtual void DisplayMessage()
     {
         Console.WriteLine($"Congratulations! You have earned {_points} points!");
-        /* AddPoints(); */
         _completed = true;
     }
 
