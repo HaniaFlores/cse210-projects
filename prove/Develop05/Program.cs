@@ -96,11 +96,17 @@ class Program
                     Console.Write("Which goal did you accomplish? ");
                     int index = int.Parse(Console.ReadLine());
                     Goal selectedGoal = data.GetList()[index - 1];
-                    selectedGoal.DisplayMessage();
                     /* runningScore += selectedGoal.GetPoints(); */
-                    runningScore = AddPoints(runningScore, selectedGoal);
-                    Console.WriteLine($"You now have {runningScore} points.");
-                    Console.WriteLine();
+                    if (selectedGoal.GetCompleted() == true)
+                    {
+                        Console.WriteLine("This goal has been completed already. Try another one.");
+                    }
+                    else {
+                        selectedGoal.DisplayMessage();
+                        runningScore = AddPoints(runningScore, selectedGoal);
+                        Console.WriteLine($"You now have {runningScore} points.");
+                        Console.WriteLine();
+                    }
                     break;
 
                 case 6:

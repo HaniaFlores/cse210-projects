@@ -29,4 +29,21 @@ public class ChecklistGoal : Goal
             Console.WriteLine(GetTitle());
         }
     }
+
+    public override void DisplayMessage()
+    {
+        Console.WriteLine($"Congratulations! You have earned {GetPoints()} points!");
+        _count++;
+    }
+
+    public void IsCompleted()
+    {
+        if (_count < _target)
+        {
+            SetCompleted(false);
+        }
+        else {
+            SetCompleted(true);
+        }
+    }
 }
