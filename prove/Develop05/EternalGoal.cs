@@ -5,11 +5,6 @@ public class EternalGoal : Goal
         SetGoalType("EternalGoal");
     }
 
-    public override void DisplayMessage()
-    {
-        Console.WriteLine($"Congratulations! You have earned {GetPoints()} points!");
-    }
-
     public override string SaveGoal()
     {
         return $"{GetGoalType()}:{GetTitle()},{GetDescription()},{GetPoints()}";

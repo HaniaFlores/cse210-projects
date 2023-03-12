@@ -42,7 +42,6 @@ public abstract class Goal
     public virtual void DisplayMessage()
     {
         Console.WriteLine($"Congratulations! You have earned {_points} points!");
-        _completed = true;
     }
 
     public string MarkAsCompleted()

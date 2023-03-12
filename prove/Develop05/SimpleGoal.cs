@@ -10,4 +10,10 @@ public class SimpleGoal : Goal
     {
         return $"{GetGoalType()}:{GetTitle()},{GetDescription()},{GetPoints()},{GetCompleted()}";
     }
+
+    public override void DisplayMessage()
+    {
+        base.DisplayMessage();
+        SetCompleted(true);
+    }
 }

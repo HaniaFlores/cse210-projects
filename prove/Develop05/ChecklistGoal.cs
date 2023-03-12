@@ -39,7 +39,7 @@ public class ChecklistGoal : Goal
     {
         _count++;
         AddBonus();
-        Console.WriteLine($"Congratulations! You have earned {GetPoints()} points!");
+        base.DisplayMessage();
         IsCompleted();
     }
 
