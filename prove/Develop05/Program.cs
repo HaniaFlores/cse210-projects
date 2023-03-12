@@ -86,7 +86,7 @@ class Program
 
                 case 4:
                     data.LoadFromFile();
-                    runningScore = data.GetScore();
+                    runningScore += data.GetScore();
                     Console.WriteLine(" ---- Data loaded. Now you can display your goals in the console. ----");
                     Console.WriteLine();
                     break;

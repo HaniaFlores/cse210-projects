@@ -1,6 +1,8 @@
-590
+2240
+ChecklistGoal:check3,desc3,310,300,5,5
 SimpleGoal:simple1,desc1,30,True
 EternalGoal:eternal1,desc1,50
 EternalGoal:eternal2,desc2,100
-ChecklistGoal:check1,desc1,30,100,3,2
-ChecklistGoal:check2,desc2,50,400,10,2
+ChecklistGoal:check1,desc1,230,100,3,3
+ChecklistGoal:check2,desc2,450,400,10,10
+SimpleGoal:simple2,desc2,40,True

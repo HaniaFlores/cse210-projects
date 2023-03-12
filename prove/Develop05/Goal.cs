@@ -73,4 +73,9 @@ public abstract class Goal
         }
     }
 
+    public void SetPoints(int points)
+    {
+        _points = points;
+    }
+
 }

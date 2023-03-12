@@ -10,7 +10,12 @@ public class ChecklistGoal : Goal
         _target = target;
         _bonus = bonus;
         _count = count;
+        if (_count == _target)
+        {
+            status = true;
+        }
         SetCompleted(status);
+
     }
 
     public override string SaveGoal()
@@ -32,18 +37,29 @@ public class ChecklistGoal : Goal
 
     public override void DisplayMessage()
     {
-        Console.WriteLine($"Congratulations! You have earned {GetPoints()} points!");
         _count++;
+        AddBonus();
+        Console.WriteLine($"Congratulations! You have earned {GetPoints()} points!");
+        IsCompleted();
     }
 
     public void IsCompleted()
     {
-        if (_count < _target)
+        if (_count == _target)
         {
-            SetCompleted(false);
+            SetCompleted(true);
         }
         else {
-            SetCompleted(true);
+            SetCompleted(false);
+        }
+    }
+
+    public void AddBonus()
+    {
+        if (_count == _target && GetCompleted() == false)
+        {
+            int points = GetPoints() + _bonus;
+            SetPoints(points);
         }
     }
 }
