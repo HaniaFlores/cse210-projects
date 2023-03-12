@@ -40,6 +40,11 @@ public class Data
 
     public void LoadFromFile()
     {
+        /* EXCEEDING REQUIREMENTS:
+        If the user has created and accomplished some goals before loading a file,
+        the console will show the goals we got from the file and the previously created ones.
+        The score will also be updated. */
+
         SetFilename();
         List<string> lines = new List<string>();
         using (StreamReader reader = new StreamReader(_filename))
@@ -66,7 +71,6 @@ public class Data
                 case "SimpleGoal":
                     bool status = bool.Parse(parts[3]);
                     SimpleGoal simple = new SimpleGoal(title, desc, points, status);
-                    /* goal1.SetScore(_score); */
                     _data.Add(simple);
                     break;
                 case "EternalGoal":

@@ -1,0 +1,6 @@
+210
+SimpleGoal:goal2,desc2,50,False
+SimpleGoal:newgoal,newdes,40,True
+SimpleGoal:goal1,desc1,10,True
+EternalGoal:eter1,desc1,20
+ChecklistGoal:check1,des2,130,100,2,2

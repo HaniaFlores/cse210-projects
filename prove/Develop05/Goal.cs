@@ -36,11 +36,6 @@ public abstract class Goal
 
 
     public abstract string SaveGoal();
-/* 
-    public string RecordEvent()
-    {
-        return $"{_title} {_description}";
-    } */
 
     public int GetPoints() { return _points; }
 

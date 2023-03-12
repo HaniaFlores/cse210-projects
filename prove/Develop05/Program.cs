@@ -103,6 +103,10 @@ class Program
                     int index = int.Parse(Console.ReadLine());
                     Goal selectedGoal = data.GetList()[index - 1];
                     
+                    /* EXCEEDING REQUIREMENTS:
+                    If the goal the user is accomplishing is already marked as completed,
+                    the program will not add the points and the console will display a message. */
+
                     if (selectedGoal.GetCompleted() == true)
                     {
                         Console.WriteLine("This goal has been completed already. Try another one.");
@@ -118,6 +122,11 @@ class Program
 
                 case 6:
                     Console.Clear();
+
+                    /* EXCEEDING REQUIREMENTS:
+                    Before closing the program, we remind the user to save the changes
+                    by creating a new file or updating an existing one. */
+
                     Console.Write("Did you save the data in a file? ");
                     string saved = Console.ReadLine().Trim();
                     if (saved == "No" || saved == "no")
