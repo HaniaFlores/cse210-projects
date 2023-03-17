@@ -6,7 +6,15 @@ class Program
     {
         Console.Clear();
         Console.WriteLine("Program 1: Youtube Videos");
+        List<Video> _videos = new List<Video>();
+
         /* VIDEO 1 */
+        /* VIDEO INFORMATION */
+        Video v1 = new Video();
+        v1._title = "Video1";
+        v1._author = "Author1";
+        v1._length = 90;
+
         /* COMMENTS */
         Comment c1 = new Comment();
         c1._name = "user1";
@@ -20,18 +28,20 @@ class Program
         c3._name = "user3";
         c3._text = "Comment3";
 
-        /* VIDEO INFORMATION */
-        Video v1 = new Video();
-        v1._title = "Video1";
-        v1._author = "Author1";
-        v1._length = 90;
+        /* ADDING TO THE LISTS */
         v1._comments.Add(c1);
         v1._comments.Add(c2);
         v1._comments.Add(c3);
-        v1.Display();
+        _videos.Add(v1);
 
 
         /* VIDEO 2 */
+        /* VIDEO INFORMATION */
+        Video v2 = new Video();
+        v2._title = "Video2";
+        v2._author = "Author2";
+        v2._length = 45;
+
         /* COMMENTS */
         Comment c4 = new Comment();
         c4._name = "user4";
@@ -45,23 +55,26 @@ class Program
         c6._name = "user6";
         c6._text = "Comment6";
 
-        /* VIDEO INFORMATION */
-        Video v2 = new Video();
-        v2._title = "Video2";
-        v2._author = "Author2";
-        v2._length = 45;
-        v2._comments.Add(c4);
-        v2._comments.Add(c5);
-        v2._comments.Add(c6);
-        v2.Display();
-
-
-        /* VIDEO 3 */
-        /* COMMENTS */
         Comment c7 = new Comment();
         c7._name = "user7";
         c7._text = "Comment7";
 
+        /* ADDING TO THE LISTS */
+        v2._comments.Add(c4);
+        v2._comments.Add(c5);
+        v2._comments.Add(c6);
+        v2._comments.Add(c7);
+        _videos.Add(v2);
+
+
+        /* VIDEO 3 */
+        /* VIDEO INFORMATION */
+        Video v3 = new Video();
+        v3._title = "Video3";
+        v3._author = "Author3";
+        v3._length = 310;
+
+        /* COMMENTS */
         Comment c8 = new Comment();
         c8._name = "user8";
         c8._text = "Comment8";
@@ -70,14 +83,26 @@ class Program
         c9._name = "user9";
         c9._text = "Comment9";
 
-        /* VIDEO INFORMATION */
-        Video v3 = new Video();
-        v3._title = "Video3";
-        v3._author = "Author3";
-        v3._length = 310;
-        v3._comments.Add(c7);
+        Comment c10 = new Comment();
+        c10._name = "user10";
+        c10._text = "Comment10";
+
+        Comment c11 = new Comment();
+        c11._name = "user11";
+        c11._text = "Comment11";
+
+        /* ADDING TO THE LISTS */
         v3._comments.Add(c8);
         v3._comments.Add(c9);
-        v3.Display();
+        v3._comments.Add(c10);
+        v3._comments.Add(c11);
+        _videos.Add(v3);
+
+
+        /* ITERATING THROUGH THE LIST OF VIDEOS */
+        foreach(Video i in _videos)
+        {
+            i.Display();
+        }
     }
 }

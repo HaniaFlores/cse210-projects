@@ -12,7 +12,7 @@ public class Video
         Console.WriteLine(ConvertSecondsToMinutes(_length));
 
         /* For each loop to display the comments */
-        Console.WriteLine("Comments:");
+        Console.WriteLine($"Comments ({_comments.Count()}):");
         foreach(Comment i in _comments)
         {
             i.Display();
