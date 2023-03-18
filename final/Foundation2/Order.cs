@@ -38,6 +38,6 @@ public class Order
 
     public string GetShippingLabel()
     {
-        return $"Shipping Label:\n{_customer.GetCustomerName()} {_customer.GetAddress().GetStringAddress()}";
+        return $"Shipping Label:\n{_customer.GetCustomerName()} {_customer.GetAddress().GetCompleteAddress()}";
     }
 }

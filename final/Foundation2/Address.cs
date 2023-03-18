@@ -18,7 +18,7 @@ public class Address
         return _country;
     }
 
-    public string GetStringAddress()
+    public string GetCompleteAddress()
     {
         if (_country == "USA") {
             return $"{_street}\n{_city}, {_state}"; /* Country is not necessary for local shipments. */
