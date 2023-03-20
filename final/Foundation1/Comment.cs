@@ -5,6 +5,6 @@ public class Comment
 
     public void Display()
     {
-        Console.WriteLine($"{_name}: {_text}");
+        Console.WriteLine($"{_name}: {_text}\n");
     }
 }
