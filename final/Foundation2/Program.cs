@@ -9,7 +9,7 @@ class Program
 
         /* ORDER 1 */
         /* CUSTOMER INFO */
-        Customer customer1 = new Customer("John Smith", new Address("123 Main St", "Anytown", "NY", "USA"));
+        Customer customer1 = new Customer("John Smith", new Address("45-57 Bowne St", "Queens", "NY", "USA"));
         /* PRODUCTS */
         List<Product> list1 = new List<Product>
         {
@@ -28,7 +28,7 @@ class Program
 
         /* ORDER 2 */
         /* CUSTOMER INFO */
-        Customer customer2 = new Customer("Jane Doe", new Address("456 Elm St", "Other Town", "ON", "Canada"));
+        Customer customer2 = new Customer("Jane Doe", new Address("463 Saint-Catherine St W", "Montreal", "QC", "Canada"));
         /* PRODUCTS */
         List<Product> list2 = new List<Product>
         {

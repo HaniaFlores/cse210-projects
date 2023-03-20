@@ -31,7 +31,7 @@ public class Order
         string packLabel = "Packing Label:\n";
         foreach(Product i in _products)
         {
-            packLabel += $"•{i.GetProductName()} - #{i.GetId()}\n";
+            packLabel += $"•{i.GetProductName()}({i.GetQuantity()}) - #{i.GetId()}\n";
         }
         return packLabel;
     }

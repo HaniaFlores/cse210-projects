@@ -18,4 +18,6 @@ public class Product
     public int GetId() {return _id;}
 
     public string GetProductName() {return _productName;}
+
+    public int GetQuantity() { return _quantity; }
 }
