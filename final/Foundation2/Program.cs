@@ -11,14 +11,16 @@ class Program
         /* CUSTOMER INFO */
         Customer customer1 = new Customer("John Smith", new Address("45-57 Bowne St", "Queens", "NY", "USA"));
         /* PRODUCTS */
-        List<Product> list1 = new List<Product>
-        {
-            new Product("T-Shirt", 1234, 12.99, 2),
-            new Product("Leggings", 5678, 29.35, 3),
-            new Product("Blazer", 9098, 34.90, 1)
-        };
+        Product p1 = new Product("T-Shirt", 1234, 12.99, 2);
+        Product p2 = new Product("Leggings", 5678, 29.35, 3);
+        Product p3 = new Product("Blazer", 9098, 34.90, 1);
 
-        Order order1 = new Order(customer1, list1);
+        Order order1 = new Order(customer1);
+        order1.AddProduct(p1);
+        order1.AddProduct(p2);
+        order1.AddProduct(p3);
+
+        /* DISPLAY ORDER */
         Console.WriteLine("\nOrder 1");
         Console.WriteLine(order1.GetPackingLabel());
         Console.WriteLine(order1.GetShippingLabel());
@@ -30,14 +32,17 @@ class Program
         /* CUSTOMER INFO */
         Customer customer2 = new Customer("Jane Doe", new Address("463 Saint-Catherine St W", "Montreal", "QC", "Canada"));
         /* PRODUCTS */
-        List<Product> list2 = new List<Product>
-        {
-            new Product("Shorts", 7654, 14.99, 3),
-            new Product("T-Shirt", 1234, 12.99, 2),
-            new Product("Jeans", 3210, 30.50, 2)
-        };
 
-        Order order2 = new Order(customer2, list2);
+        Product p4 = new Product("Shorts", 7654, 14.99, 3);
+        Product p5 = new Product("T-Shirt", 1234, 12.99, 2);
+        Product p6 = new Product("Jeans", 3210, 30.50, 2);
+
+        Order order2 = new Order(customer2);
+        order2.AddProduct(p4);
+        order2.AddProduct(p5);
+        order2.AddProduct(p6);
+
+        /* DISPLAY ORDER */
         Console.WriteLine("\nOrder 2");
         Console.WriteLine(order2.GetPackingLabel());
         Console.WriteLine(order2.GetShippingLabel());
