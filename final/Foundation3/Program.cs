@@ -14,7 +14,7 @@ class Program
 
         Console.WriteLine("\nStandard Message:");
         Console.WriteLine(event1.GetStandardDetails());
-        Console.WriteLine("\nFull Detailed Message:");
+        Console.WriteLine("\nDetailed Message:");
         Console.WriteLine(event1.GetFullDetails());
         Console.WriteLine("\nShort Message:");
         Console.WriteLine(event1.GetShortDescription());
@@ -27,7 +27,7 @@ class Program
 
         Console.WriteLine("\nStandard Message:");
         Console.WriteLine(event2.GetStandardDetails());
-        Console.WriteLine("\nFull Detailed Message:");
+        Console.WriteLine("\nDetailed Message:");
         Console.WriteLine(event2.GetFullDetails());
         Console.WriteLine("\nShort Message:");
         Console.WriteLine(event2.GetShortDescription());
@@ -40,7 +40,7 @@ class Program
 
         Console.WriteLine("\nStandard Message:");
         Console.WriteLine(event3.GetStandardDetails());
-        Console.WriteLine("\nFull Detailed Message:");
+        Console.WriteLine("\nDetailed Message:");
         Console.WriteLine(event3.GetFullDetails());
         Console.WriteLine("\nShort Message:");
         Console.WriteLine(event3.GetShortDescription());

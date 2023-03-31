@@ -11,6 +11,6 @@ public class LecturesEvent:Event
 
     public string GetFullDetails()
     {
-        return $"Title: \"{GetEventTitle()}\"\nDescription: {GetDescription()}\nDate: {GetDate()} at {GetTime()}\nSpeaker: {_speaker}\nCapacity: {_capacity} people\nAddress: {GetAddress().GetCompleteAddress()}";
+        return $"{GetStandardDetails()}\nSpeaker: {_speaker}\nCapacity: {_capacity} people";
     }
 }

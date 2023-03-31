@@ -10,6 +10,6 @@ public class ReceptionsEvent:Event
 
     public string GetFullDetails()
     {
-        return $"Title: \"{GetEventTitle()}\"\nDescription: {GetDescription()}\nDate: {GetDate()} at {GetTime()}\nAddress: {GetAddress().GetCompleteAddress()}\nPlease confirm your assistance at {_email}";
+        return $"{GetStandardDetails()}\nPlease confirm your assistance at {_email}";
     }
 }

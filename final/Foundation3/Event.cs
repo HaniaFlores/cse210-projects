@@ -15,13 +15,6 @@ public class Event {
         _address = address;
     }
 
-    public string GetEventTitle() { return _eventTitle; }
-    public string GetDescription() { return _description; }
-    public string GetDate() { return _date; }
-    public string GetTime() { return _time; }
-    public Address GetAddress() { return _address; }
-    
-
     public void SetEventType(string eventType) { _eventType = eventType; }
 
     public string GetStandardDetails()

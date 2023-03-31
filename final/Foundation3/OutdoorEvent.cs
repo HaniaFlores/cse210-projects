@@ -10,6 +10,6 @@ public class OutdoorEvent:Event
 
     public string GetFullDetails()
     {
-        return $"Title: \"{GetEventTitle()}\"\nDescription: {GetDescription()}\nDate: {GetDate()} at {GetTime()}\nAddress: {GetAddress().GetCompleteAddress()}\nWeather Forecast: {_weatherForecast}";
+        return $"{GetStandardDetails()}\nWeather Forecast: {_weatherForecast}";
     }
 }
