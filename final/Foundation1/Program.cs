@@ -5,7 +5,7 @@ class Program
     static void Main(string[] args)
     {
         Console.Clear();
-        Console.WriteLine("Program 1: Youtube Videos");
+        Console.WriteLine("Program 1: Youtube Videos\n");
         List<Video> _videos = new List<Video>();
 
         /* VIDEO 1 */
@@ -33,7 +33,6 @@ class Program
         v1._comments.Add(c2);
         v1._comments.Add(c3);
         _videos.Add(v1);
-
 
         /* VIDEO 2 */
         /* VIDEO INFORMATION */

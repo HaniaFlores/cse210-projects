@@ -7,12 +7,13 @@ public class Video
 
     public void Display()
     {
+        Console.WriteLine("------------------------------- NEW VIDEO -------------------------------");
         Console.WriteLine($"\nTitle: {_title}");
         Console.WriteLine($"Author: {_author}");
         Console.WriteLine(ConvertSecondsToMinutes(_length));
 
         /* For each loop to display the comments */
-        Console.WriteLine($"Comments ({_comments.Count()}):");
+        Console.WriteLine($"\nComments ({_comments.Count()}):");
         foreach(Comment i in _comments)
         {
             i.Display();
