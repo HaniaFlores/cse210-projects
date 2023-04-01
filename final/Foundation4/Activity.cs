@@ -15,8 +15,14 @@ public abstract class Activity
     public int GetDuration() { return _duration; }
 
     public abstract decimal GetDistance();
-    public abstract decimal GetSpeed();
-    public abstract decimal GetPace();
+    public virtual decimal GetSpeed()
+    {
+        return (GetDistance() / _duration) * 60;
+    }
+    public virtual decimal GetPace()
+    {
+        return 60 / GetSpeed();
+    }
 
     public string GetSummary()
     {

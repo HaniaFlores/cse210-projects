@@ -10,16 +10,7 @@ public class SwimmingActivity : Activity
 
     public override decimal GetDistance()
     {
+        /* Added m to ensure accurate results */
         return _laps * 50m / 1000m * 0.62m;
-    }
-
-    public override decimal GetSpeed()
-    {
-        return (GetDistance() / GetDuration()) * 60 ;
-    }
-
-    public override decimal GetPace()
-    {
-        return 60 / GetSpeed();
     }
 }

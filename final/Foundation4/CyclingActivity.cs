@@ -14,9 +14,4 @@ public class CyclingActivity : Activity
     }
 
     public override decimal GetSpeed() { return _speed; }
-
-    public override decimal GetPace()
-    {
-        return 60 / _speed;
-    }
 }

@@ -5,18 +5,9 @@ public class RunningActivity : Activity
     public RunningActivity(DateTime date, int duration, decimal distance) : base(date, duration)
     {
         _distance = distance;
-        SetActivityType("Runnning");
+        SetActivityType("Running");
     }
 
     public override decimal GetDistance() { return _distance; }
 
-    public override decimal GetSpeed()
-    {
-        return (_distance / GetDuration()) * 60;
-    }
-
-    public override decimal GetPace()
-    {
-        return GetDuration() / _distance;
-    }
 }
