@@ -15,11 +15,11 @@ class Program
         activities.Add(act1);
 
         /* Cycling Activity */
-        CyclingActivity act2 = new CyclingActivity(new DateTime(2023, 3, 25), 35, 15);
+        CyclingActivity act2 = new CyclingActivity(new DateTime(2023, 3, 25), 50, 13);
         activities.Add(act2);
 
         /* Swimming Activity */
-        SwimmingActivity act3 = new SwimmingActivity(new DateTime(2023, 3, 26), 40, 32);
+        SwimmingActivity act3 = new SwimmingActivity(new DateTime(2023, 3, 26), 40, 45);
         activities.Add(act3);
 
         foreach (Activity activity in activities)
